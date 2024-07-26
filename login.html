@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đăng nhập</title>
+<link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+<div class="ctn">
+    <h1 class="text">Đăng nhập</h1>
+    <form  id="loginForm">
+        <label for="email">Email:</label><br>
+        <input class="input" type="email" id="email" name="email"><br><br>
+        <label for="password">Mật khẩu:</label><br>
+        <input class="input" type="password" id="password" name="password"><br><br>
+        <button type="submit" class="btndangnhap">Đăng nhập</button>
+    </form>
+</div>
+
+
+<script>
+// Mảng thông tin tài khoản
+var accounts = [
+    { email: 'example1@gmail.com', password: '123456' },
+    { email: 'example2@gmail.com', password: 'abc' }
+];
+
+// Lưu mảng thông tin tài khoản vào LocalStorage
+localStorage.setItem('accounts', JSON.stringify(accounts));
+
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+
+    var storedAccounts = JSON.parse(localStorage.getItem('accounts'));
+    console.log(storedAccounts);
+    if (!storedAccounts){
+        alert(`chua co tai khoan`);
+        return;
+    }
+   // kiểm tra xem email và pasword có trùng với tài khoản lưu trên localStorage không
+    var foundAccount = storedAccounts.find(account => account.email === email && account.password === password);
+    if (foundAccount) {
+        alert('Đăng nhập thành công!');
+       
+        window.location.href = "index.html";
+        localStorage.setItem("account-login", _email);
+    } else {
+        alert('Sai email hoặc mật khẩu');
+        window.location.href = "login.html";
+    }
+});
+</script>
+
+</body>
+</html>

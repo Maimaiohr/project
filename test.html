@@ -1,0 +1,68 @@
+function editCourse(index) {
+
+    var list = JSON.parse(localStorage.getItem("list_category")) ? JSON.parse(localStorage.getItem("list_category")) : [];
+    document.getElementById("id").value = list[index].id;
+    document.getElementById("id").setAttribute("readonly", true);
+    document.getElementById("name").value = list[index].name;
+    document.getElementById("time").value = list[index].time;
+
+    if (!list[index].status) {
+        document.getElementById("statusFalse").checked = false;
+    } else {
+        document.getElementById("statusTrue").checked = true;
+    }
+    document.getElementById("save").style.display = "none";
+    document.getElementById("update").style.display = "inline-block";
+
+    // hien form va an du lieu di
+    var show = document.querySelector(".addcourse");
+    var unshowbtn = document.querySelector(".btnKhoahoc");
+    var unshowCourseTable = document.querySelector(".tablecourse");
+    var unshowpage = document.querySelector(".page");
+    var unshowdiv = document.querySelector(".find");
+    var unshowdiv2 = document.querySelector(".find2");
+    unshowbtn.style = "display: none";
+    unshowCourseTable.style = "display: none";
+    unshowpage.style = "display: none";
+    unshowdiv.style = "display: none";
+    unshowdiv2.style = "display: none";
+    show.style = "display:block";
+}
+function changeCourse() {
+    var list = JSON.parse(localStorage.getItem("list_category")) ? JSON.parse(localStorage.getItem("list_category")) : [];
+    let myStatus = document.querySelectorAll(".status");
+    let statusValue;
+    for (let i = 0; i < myStatus.length; i++) {
+        if (myStatus[i].checked) {
+            statusValue = myStatus.value;
+        }
+    }
+    const id = document.getElementById("id").value;
+    const newCourse = {
+        id: id,
+        name: document.getElementById("name").value,
+        time: document.getElementById("time").value,
+        status: statusValue === "0" ? false : true
+    }
+
+    const index = list.findIndex(item => item.id === id);
+    if (index >= 0) {
+        list[index] = newCourse;
+    }
+    // console.log(newCourse);
+    localStorage.setItem("list_category", JSON.stringify(list));
+    var show = document.querySelector(".addcourse");
+    var unshowbtn = document.querySelector(".btnKhoahoc");
+    var unshowCourseTable = document.querySelector(".tablecourse");
+    var unshowpage = document.querySelector(".page");
+    var unshowdiv = document.querySelector(".find");
+    var unshowdiv2 = document.querySelector(".find2");
+    unshowbtn.style = "display: block";
+    unshowCourseTable.style = "display: block";
+    unshowpage.style = "display: block";
+    unshowdiv.style = "display: block";
+    unshowdiv2.style = "display: block";
+    show.style = "display:none";
+    // gọi hàm render để hiển thị lại table
+    render();
+}

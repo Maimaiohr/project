@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header class="header p-3">
+        <div class="img">
+            <img src="image/logo.png" alt="">
+            <p class="text-logo">Để nông dân biết code</p>
+        </div>
+        <div class="text-header">
+            <h3><b>HỆ THỐNG QUẢN LÝ SINH VIÊN RIKKEI</b></h3>
+        </div>
+        <div>
+            <button class="btn" type="button" onclick="DangXuat()">Đăng xuất</button>
+        </div>
+    </header>
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3 p-5 main-border vh-100 bg-info-subtle">
+
+                    <table class="table-menu">
+                        <tr>
+                            <td><i class="fa-solid fa-file-export"></i><a href="index.html"
+                                    onclick="renderHomePage()">Bảng điều khiển</a></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa-solid fa-magnifying-glass-chart"></i><a href="course.html"
+                                    onclick="renderCourse()">Quản lý khóa học</a></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa-solid fa-house-user"></i><a href="class.html" onclick="renderClass()">Quản
+                                    lý lớp học</a></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa-solid fa-users-line"></i><a href="student.html"
+                                    onclick="renderStudents()">Quản lý sinh viên</a></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa-solid fa-user"></i><a href="acount.html" onclick="renerAcount()">Quản lý
+                                    tài khoản</a></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-lg-9 p-5 main-border vh-100" id="body">
+                    <div class="lophoc">
+
+                        <div class="khoahoc">
+                            <h3>QUẢN LÝ LỚP HỌC</h3>
+                        </div>
+                        <div class="div1-khoahoc">
+                            <div><button class="btnClass btn btnKhoahoc" id="addclassbtn">Thêm mới</button></div>
+                            <div class="find">
+                                <input type="text" placeholder="Nhập lớp học cần tìm kiếm" id="searchInput">
+                                <button class="btn" onclick="searchClass()">Tìm kiếm</button>
+                            </div>
+                            <div class="div2-khoahoc find2">
+                                <label for="">Sắp xếp</label>
+                                <select name="" id="" style="height: 25px;">
+                                    <option value="">tăng dần </option>
+                                    <option value="">giảm dần</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="addClass1">
+                            <div class="addclass">
+                                <!-- form  -->
+                                <form action="" class="addclassform">
+                                    <div>
+                                        <label for="">Mã lớp học (*)</label>
+                                        <input type="text" placeholder="Nhập mã lớp học" id="id">
+                                    </div>
+                                    <div>
+                                        <label for="">Tên lớp học (*)</label>
+                                        <input type="text" placeholder="Nhập tên lớp học" id="name">
+                                    </div>
+                                    <div>
+                                        <label for="">Giảng viên (*)</label>
+                                        <input type="text" placeholder="Nhập vào giảng viên dạy lớp" id="teacher">
+                                    </div>
+                                    <div>
+                                        <label for="">Sĩ số (*)</label>
+                                        <input type="text" placeholder="Nhập vào sĩ số lớp" id="SL">
+                                    </div>
+                                    <div>
+                                        <label for="">Mô tả</label>
+                                        <input type="text" placeholder="Nhập vào mô tả của lớp" id="decreption">
+                                    </div>
+                                    <div>
+                                        <label for="">Trạng thái</label>
+                                        <input type="text" placeholder="Nhập trạng thái lớp" id="status">
+                                    </div>
+                                    <div class="form-group">
+                                        <button id="save" class="btn btnForm" type="button" onclick="addNewClass()"
+                                            type="button">Thêm mới</button>
+                                        <button style="display: none;" id="update" class="btn btnForm" type="button"
+                                            onclick="changeClass()" type="button">Cập nhật</button>
+                                        <button class="btn btnForm" type="button" onclick="returnClass()">Đóng</button>
+
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="table tableclass" id="tableclass">
+                                <!-- table  -->
+                                <table class="table-class">
+                                    <tr style="background-color: rgb(114, 161, 237);" class="title">
+                                        <td>STT</td>
+                                        <td>Mã lớp</td>
+                                        <td>Tên lớp</td>
+                                        <td>Giảng viên</td>
+                                        <td>Mô tả</td>
+                                        <td>Sĩ số</td>
+                                        <td>Trạng thái</td>
+                                        <td>Khóa học</td>
+                                        <td>Hành động</td>
+                                    </tr>
+                                    <tbody id="hung">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <script>
+                            // khai báo mảng đối tương category 
+                            var listClass = JSON.parse(localStorage.getItem("list_class")) ? JSON.parse(localStorage.getItem("list_class")) : [];
+
+                            // duyệt mảng và hiển thị vào tbody
+                            function render() {
+
+                                var _tr = "";
+                                var myList = JSON.parse(localStorage.getItem("list_class")) ? JSON.parse(localStorage.getItem("list_class")) : [];
+                                myList.forEach(function (item, index) {
+                                    console.log(item);
+                                    _tr += `<tr>
+                                <td>${index + 1}</td>
+                                <td>${item.id}</td>
+                                <td>${item.name}</td>
+                                <td>${item.teacher}</td>
+                                <td>${item.decreption}</td>
+                                <td>${item.SL}</td>
+                                <td>${item.status}</td>
+                                <td>${item.course}</td>
+                                 <td><button class="btn editbtn" onclick="editClass(${index})">Sửa</button>
+                                    <button class="btn" onclick="remove(${index})">xóa</button></td>
+                            </tr>`
+                                })
+                                var _tbody = document.getElementById("hung");
+                                _tbody.innerHTML = _tr;
+                            }
+                            render();
+                            var listClass = [
+                                { id: "C001", name: "HN-JV230508", teacher: "QuangND", decreption: "Java fullstack", SL: 20, status: "Chờ lớp", course: "Khóa học 1" },
+                                { id: "C002", name: "ĐN-JS230407", teacher: "AnNV", decreption: "Javascript", SL: 22, status: "hoạt động ", course: "Khóa học 1" },
+                                { id: "C003", name: "HCM-JV230425", teacher: "BinhBV", decreption: "Fontend", SL: 25, status: "Kết thúc", course: "Khóa học 1" },
+                                { id: "C004", name: "FK-JV230627", teacher: "BinhBV", decreption: "Backend", SL: 20, status: "Chờ lớp", course: "Khóa học 2" },
+                                { id: "C005", name: "HN-JV230509", teacher: "BinhBV", decreption: "Java fullstack", SL: 20, status: "Chờ lớp", course: "Khóa học 1" },
+                                { id: "C006", name: "HN-JV230510", teacher: "BinhBV", decreption: "Java fullstack", SL: 20, status: "Chờ lớp", course: "Khóa học 3" },
+                                { id: "C007", name: "HN-JV230511", teacher: "BinhBV", decreption: "Java fullstack", SL: 20, status: "Chờ lớp", course: "Khóa học 3" },
+                                { id: "C008", name: "HN-JV230512", teacher: "BinhBV", decreption: "Java fullstack", SL: 20, status: "Chờ lớp", course: "Khóa học 2" },
+                                { id: "C009", name: "HN-JV230513", teacher: "BinhBV", decreption: "Java fullstack", SL: 20, status: "Chờ lớp", course: "Khóa học 2" },
+                                { id: "C0010", name: "HN-JV230514", teacher: "BinhBV", decreption: "Java fullstack", SL: 20, status: "Chờ lớp", course: "Khóa học 3" },
+                            ]
+                            localStorage.setItem("list_class", JSON.stringify(listClass));
+                            render();
+                            function remove(index) {
+                                listClass.splice(index, 1);
+                                // lưu vào localStorege 
+                                alert("Xac nhan xoa lop hoc")
+                                localStorage.setItem("list_class", JSON.stringify(listClass));
+                                render();
+                            }
+                            
+                        </script>
+
+                        <script>
+                            // edit 
+                            // function editClass(index) {
+                            //     var listClass = JSON.parse(localStorage.getItem("list_class")) ? JSON.parse(localStorage.getItem("list_class")) : [];
+                            //     document.getElementById("id").value = listClass[index].id;
+                            //     document.getElementById("id").setAttribute("readonly", true);
+                            //     document.getElementById("name").value = listClass[index].name;
+                            //     document.getElementById("teacher").value = listClass[index].teacher;
+                            //     document.getElementById("SL").value = listClass[index].SL;
+                            //     document.getElementById("decreption").value = listClass[index].decreption;
+                            //     document.getElementById("status").value = listClass[index].status;
+                            //     document.getElementById("save").style.display = "none";
+                            //     document.getElementById("update").style.display = "inline-block";
+                            //     // hien form va an du lieu di
+                            //     var show = document.querySelector(".addclass");
+                            //     var unshowbtn = document.querySelector(".btnKhoahoc");
+                            //     var unshowCourseTable = document.querySelector(".tableclass");
+                            //     var unshowpage = document.querySelector(".page");
+                            //     var unshowdiv = document.querySelector(".find");
+                            //     var unshowdiv2 = document.querySelector(".find2");
+                            //     unshowbtn.style = "display: none";
+                            //     unshowCourseTable.style = "display: none";
+                            //     unshowpage.style = "display: none";
+                            //     unshowdiv.style = "display: none";
+                            //     unshowdiv2.style = "display: none";
+                            //     show.style = "display:block";
+
+                            // }
+                            // // dong tab 
+                            // function returnClass() {
+                            //     window.location.href = "class.html";
+                            // }
+                            // function changeClass() {
+                            //     var listClass = JSON.parse(localStorage.getItem("list_class")) ? JSON.parse(localStorage.getItem("list_class")) : [];
+                            //     const id = document.getElementById("id").value;
+                            //     const newClass = {
+                            //         id: id,
+                            //         name: document.getElementById("name").value,
+                            //         teacher: document.getElementById("teacher").value,
+                            //         SL: document.getElementById("SL").value,
+                            //         decreption: document.getElementById("decreption").value,
+                            //         status: document.getElementById("status").value,
+                            //     }
+
+                            //     const index = listClass.findIndex(item => item.id === id);
+                            //     if (index >= 0) {
+                            //         listClass[index] = newClass;
+                            //     }
+                            //     // hien thi lai bang
+
+                            //     localStorage.setItem("list_class", JSON.stringify(listClass));
+                            //     var show = document.querySelector(".addclass");
+                            //     var unshowbtn = document.querySelector(".btnKhoahoc");
+                            //     var unshowCourseTable = document.querySelector(".tableclass");
+                            //     var unshowpage = document.querySelector(".page");
+                            //     var unshowdiv = document.querySelector(".find");
+                            //     var unshowdiv2 = document.querySelector(".find2");
+                            //     unshowbtn.style = "display: block";
+                            //     unshowCourseTable.style = "display: block";
+                            //     unshowpage.style = "display: block";
+                            //     unshowdiv.style = "display: block";
+                            //     unshowdiv2.style = "display: block";
+                            //     show.style = "display:none";
+                            //     // gọi hàm render để hiển thị lại table
+                            //     render();
+                            // }
+
+
+                            // <!-- them lop hoc moi -->
+                            const btnKhoahoc = document.querySelector(".btnKhoahoc");
+                            btnKhoahoc.onclick = function () {
+                                var show = document.querySelector(".addclass");
+                                var unshowbtn = document.querySelector(".btnKhoahoc");
+                                var unshowCourseTable = document.querySelector(".tableclass");
+                                var unshowpage = document.querySelector(".page");
+                                var unshowdiv = document.querySelector(".find");
+                                var unshowdiv2 = document.querySelector(".find2");
+                                unshowbtn.style = "display: none";
+                                unshowCourseTable.style = "display: none";
+                                unshowpage.style = "display: none";
+                                unshowdiv.style = "display: none";
+                                unshowdiv2.style = "display: none";
+                                show.style = "display:block";
+                            }
+                            function addNewClass() {
+                                var _id = document.getElementById("id").value;
+                                var _name = document.getElementById("name").value;
+                                var _teacher = document.getElementById("teacher").value;
+                                var _SL = document.getElementById("SL").value;
+                                var _status = document.getElementById("status").value;
+                                var _decreption = document.getElementById("decreption").value;
+
+                                var cate = { id: _id, name: _name, teacher: _teacher, SL: _SL, status: _status, decreption: _decreption }
+                                // thêm 1 phần tử vào mảng
+                                listClass.push(cate);
+                                // lưu vào localStorege 
+                                localStorage.setItem("list_class", JSON.stringify(listClass));
+                                // an du lieu 
+                                var show = document.querySelector(".addclass");
+                                var unshowbtn = document.querySelector(".btnKhoahoc");
+                                var unshowCourseTable = document.querySelector(".tableclass");
+                                var unshowpage = document.querySelector(".page");
+                                var unshowdiv = document.querySelector(".find");
+                                var unshowdiv2 = document.querySelector(".find2");
+                                unshowbtn.style = "display: block";
+                                unshowCourseTable.style = "display: block";
+                                unshowpage.style = "display: block";
+                                unshowdiv.style = "display: block";
+                                unshowdiv2.style = "display: block";
+                                show.style = "display:none";
+                                // gọi hàm render để hiển thị lại table
+                                render();
+                            }
+                            // dong tab 
+                            function returnClass() {
+                                window.location.href = "class.html";
+                            }
+                            // tìm kiếm khoa hoc
+                            function searchClass() {
+                                const input = document.getElementById('searchInput').value.toLowerCase();
+                                const tableBody = document.getElementById('hung');
+                                const rows = tableBody.getElementsByTagName('tr');
+
+                                for (let i = 0; i < rows.length; i++) {
+                                    let cells = rows[i].getElementsByTagName('td');
+                                    let courseFound = false;
+
+                                    for (let j = 0; j < cells.length; j++) {
+                                        if (cells[j].innerText.toLowerCase().includes(input)) {
+                                            courseFound = true;
+                                            break;
+                                        }
+                                    }
+                                    if (courseFound) {
+                                        rows[i].style.display = "";
+                                    } else {
+                                        rows[i].style.display = "none";
+                                    }
+                                }
+                            }
+                        </script>
+                        <div class="page">
+                            <table>
+                                <tr>
+                                    <td><a href="">Prev</a></td>
+                                    <td><a href="">1</a></td>
+                                    <td><a href="">2</a></td>
+                                    <td>...</td>
+                                    <td><a href="">999</a></td>
+                                    <td><a href="">Next</a></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <h5 class="footer">Copyright Rikkei Academy @2023</h5>
+    </footer>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+
+
+    <script src="js/render-login-page.js"></script>
+    <script>
+        function DangXuat() {
+            localStorage.removeItem("account-login");
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+
+</html>

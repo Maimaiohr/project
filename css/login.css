@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.text{
+    margin-bottom: 15px;
+}
+.input{
+    width:100% ;
+    padding: 7px;
+    margin-top: 10px;
+}
+.btndangnhap {
+    color: white;    
+    border: none;
+    text-decoration: none;
+    background-color: rgb(73, 144, 245);
+    padding: 10px;
+
+}
+
+.ctn {
+    border: 1px solid rgb(171, 171, 171);
+    background-color: rgb(183, 181, 181);
+    width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    justify-content: center;
+    align-items: center;
+    height: 350px;
+    text-align: center;
+
+}

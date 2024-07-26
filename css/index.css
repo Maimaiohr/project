@@ -1,0 +1,168 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.main-border {
+    border: 1px solid black;
+}
+.footer{
+    text-align: center;
+}
+.header{
+    background-color: rgb(202, 224, 246);
+    height: 90px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0px 0px 11px 5px rgb(210, 204, 204);
+}
+.header img {
+    width: 130px;
+    position: absolute;
+}
+.text-logo{
+position: relative;
+left: 130px;
+top: 40px;
+}
+
+.btn{
+    border: none ;
+    padding: 0px 5px;
+    background-color: rgb(180, 177, 177);
+}
+.btn:hover{
+    background-color: blue;
+    color: white;
+}
+.btnForm{
+    background-color: rgb(50, 153, 243);
+}
+.table-menu tr td{
+
+    border-collapse: collapse;
+    padding: 10px;
+}
+.table-menu tr td a{
+    text-decoration: none;
+    color: black;
+}
+.table-menu tr td:hover {
+    background-color: rgb(70, 152, 234);
+    
+}
+.khoahoc{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.div1-khoahoc{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+.div2-khoahoc{
+    display: flex;
+}
+.btn-khoahoc{
+    color: white;    
+    border: none;
+    text-decoration: none;
+    background-color: rgb(73, 144, 245);
+    padding: 10px;
+}
+.btnKhoahoc{
+    background-color: rgb(180, 177, 177);
+}
+.BDK{
+    margin-left: 100px;
+}
+.table{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.table-khoahoc tr td{
+    border: 1px solid;
+    padding-left: 2px;
+}
+.table-khoahoc{
+    border-collapse: collapse;
+}
+.table-class{
+    border-collapse: collapse;
+}
+.table-class tr td{
+    border: 1px solid;
+    padding-left: 2px;
+}
+ .tablestudent{
+    border-collapse: collapse; 
+ }
+ .tablestudent tr td{
+    border: 1px solid;
+    padding-left: 2px;
+ }
+.addcourse{
+    border: 1px solid rgb(171, 171, 171);
+    background-color: rgb(183, 181, 181);
+    width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    text-align: center;
+    display: none;
+    border-radius: 5px;
+
+}
+.addclass{
+    border: 1px solid rgb(171, 171, 171);
+    background-color: rgb(183, 181, 181);
+    width: 500px;
+    margin: 10px auto;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    text-align: center;
+    display: none;
+    border-radius: 5px;
+}
+.addstudent{
+    border: 1px solid rgb(171, 171, 171);
+    background-color: rgb(183, 181, 181);
+    width: 500px;
+    margin: 10px auto;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    text-align: center;
+    display: none;
+    border-radius: 5px;
+}
+.addcourse form div{
+padding: 10px;
+}
+.page{
+    width: 500px;
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.page tr td{
+    border: 1px solid;
+    padding: 2px;
+    width: 100px;
+}
+.page tr td a{
+text-decoration: none;
+}
+
+.addclass div{
+    padding: 5px;
+}
